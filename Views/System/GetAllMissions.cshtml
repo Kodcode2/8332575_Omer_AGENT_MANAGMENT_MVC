@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AgentManagementWiew.Models.Mission>
+
+@{
+    ViewData["Title"] = "GetAllMissions";
+}
+
+<h1>GetAllMissions</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Agent.Nickname)</th>
+            <th>@Html.DisplayNameFor(model => model.Agent.LocationX)</th>
+            <th>@Html.DisplayNameFor(model => model.Agent.LocationY)</th>
+            <th>@Html.DisplayNameFor(model => model.Target.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Target.StatusTarget)</th>
+            <th>@Html.DisplayNameFor(model => model.Target.LocationX)</th>
+            <th>@Html.DisplayNameFor(model => model.Target.LocationY)</th>
+            <th>@Html.DisplayNameFor(model => model.DurationTask)</th>
+            <th>@Html.DisplayNameFor(model => model.TimeLeft)</th>
+            <th>@Html.DisplayNameFor(model => model.StatusMission)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Agent.Nickname)</td>
+                <td>@Html.DisplayFor(modelItem => item.Agent.LocationX)</td>
+                <td>@Html.DisplayFor(modelItem => item.Agent.LocationY)</td>
+                <td>@Html.DisplayFor(modelItem => item.Target.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Target.StatusTarget)</td>
+                <td>@Html.DisplayFor(modelItem => item.Target.LocationX)</td>
+                <td>@Html.DisplayFor(modelItem => item.Target.LocationY)</td>
+                <td>@Html.DisplayFor(modelItem => item.DurationTask)</td>
+                <td>@Html.DisplayFor(modelItem => item.TimeLeft)</td>
+                <td>@Html.DisplayFor(modelItem => item.StatusMission)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  }) |
+                    @Html.ActionLink("Details", "Details", new { }) |
+                    @Html.ActionLink("Delete", "Delete", new {  })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

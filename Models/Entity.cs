@@ -1,4 +1,4 @@
-﻿using AgentManagementAPI.Enums;
+﻿using AgentManagementWiew.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace AgentManagementWiew.Models
