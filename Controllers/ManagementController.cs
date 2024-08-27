@@ -4,9 +4,13 @@ namespace AgentManagementWiew.Controllers
 {
     public class ManagementController : Controller
     {
-        public IActionResult Index()
+        private readonly HttpClient _httpClient;
+
+        public ManagementController(HttpClient httpClient)
         {
-            return View();
+
+            _httpClient = httpClient;
+
         }
     }
 }

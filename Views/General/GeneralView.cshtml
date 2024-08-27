@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AgentManagementWiew.ViewModels.GeneralView>
+
+@{
+    ViewData["Title"] = "GeneralView";
+}
+
+<h1>GeneralView</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AllAgants)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveAgants)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllTargets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KilledTargets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllMissions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveMissions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgantTargets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgantMissions)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AllAgants)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveAgants)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AllTargets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KilledTargets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AllMissions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveMissions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgantTargets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgantMissions)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

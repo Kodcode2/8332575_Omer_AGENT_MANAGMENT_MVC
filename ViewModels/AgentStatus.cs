@@ -1,19 +1,24 @@
-﻿namespace AgentManagementWiew.ViewModels
+﻿using AgentManagementWiew.Models;
+
+namespace AgentManagementWiew.ViewModels
 {
     public class AgentStatus
     {
-        public int AllAgants { get; set; }
-        public int ActiveAgants { get; set; }
+        public string AgantDetails { get; set; } = "";
 
-        public int AllTargets { get; set; }
-        public int KilledTargets { get; set; }
+        public List<Agent> AllAgantsDetails { get; set; } = new List<Agent>();
 
+        public string? Location { get; set; }
 
-        public int AllMissions { get; set; }
-        public int ActiveMissions { get; set; }
+        public string? Status { get; set; }
 
-        public string AgantTargets { get; set; } = "";
+        public Mission Mission { get; set; }
 
-        public string AgantMissions { get; set; } = "";
+        public double TimeLiquidation { get; set; }
+
+        public int AmounEliminations { get; set; }
+
     }
+
+
 }

@@ -4,20 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
 
-public class AagentController : Controller
+public class GeneralController : Controller
 {
 
 
     private readonly HttpClient _httpClient;
 
-    public AagentController(HttpClient httpClient)
+    public GeneralController(HttpClient httpClient)
     {
 
     _httpClient = httpClient; 
 
     }
-
-
     
     public async Task<IActionResult> GeneralView()
     {
@@ -30,7 +28,7 @@ public class AagentController : Controller
         generalView.AllAgants = JsonConvert.DeserializeObject<int>(AllAgents);
 
         // סה"כ סוכנים פעילים
-        var ActiveAgents = await _httpClient.GetStringAsync("http://localhost:5258/agents/Active");
+        var ActiveAgents = await _httpClient.GetStringAsync("http://localhost:5258/agents/active");
 
         // המרה למודל התצוגה
         generalView.ActiveAgants = JsonConvert.DeserializeObject<int>(ActiveAgents);
@@ -46,43 +44,36 @@ public class AagentController : Controller
         generalView.KilledTargets = JsonConvert.DeserializeObject<int>(CountKilled);
 
         // קבלת מספר כולל של משימות
-        var CountMissions = await _httpClient.GetStringAsync("http://localhost:5258/Agents/count");
+        var CountMissions = await _httpClient.GetStringAsync("http://localhost:5258/missions/count");
         // המרה למודל התצוגה
         generalView.AllMissions = JsonConvert.DeserializeObject<int>(CountMissions);
 
         // קבלת מספר משימות פעילות
-        var CountActiveMissions = await _httpClient.GetStringAsync("http://localhost:5258/Agents/Active");
+        var CountActiveMissions = await _httpClient.GetStringAsync("http://localhost:5258/missions/Active");
         // המרה למודל התצוגה
         generalView.ActiveMissions = JsonConvert.DeserializeObject<int>(CountActiveMissions);
 
         // קבלת מספר יחסי של סוכנים למטרות
-        var resultRelativeAgentTargets = await _httpClient.GetStringAsync("http://localhost:5258/Agents/relative");
+        var resultRelativeAgentTargets = await _httpClient.GetStringAsync("http://localhost:5258/agents/relative");
         // המרה למודל התצוגה
         generalView.AgantTargets = resultRelativeAgentTargets;
 
         // קבלת מספר יחסי של סוכנים למשימות
-        var resultRelativeAgentMissions = await _httpClient.GetStringAsync("http://localhost:5258/Agents/relativeAgant");
+        var resultRelativeAgentMissions = await _httpClient.GetStringAsync("http://localhost:5258/agents/relativeAgant");
         // המרה למודל התצוגה
-        generalView.AgantMissions = resultRelativeAgentMissions;
+        
 
-        return View(generalView);
+        return View();
     }
 
-   
 
-    public async Task<IActionResult> דף3()
-    {
-        ConnectPage3 page3 = new ConnectPage3();
 
-        // קבלת פרטי כל המטרות
-        var resultAllTargetDetails = await _httpClient.GetStringAsync("http://localhost:5157/api/targets/allDetails");
-        // המרה למודל התצוגה
-        page3.targetMVCs = JsonConvert.DeserializeObject<List<string>>(resultAllTargetDetails);
 
-        return View(page3);
-    }
 
 
 }
 
 
+
+
+        

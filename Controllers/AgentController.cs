@@ -22,11 +22,10 @@ namespace AgentManagementWiew.Controllers
             AgentStatus agentStatus = new AgentStatus();
 
             // קבלת פרטי כל הסוכנים
-            var resultAllAgentDetails = await _httpClient.GetStringAsync("http://localhost:5157/api/agants/allDetails");
-            // המרה למודל התצוגה
-            agentStatus._allAgantsDetails = JsonConvert.DeserializeObject<List<Agent>>(resultAllAgentDetails);
-
-            return View(agentStatus);
+            var AllAgentDetails = await _httpClient.GetFromJsonAsync<AgentStatus>("http://localhost:5258/agents/allDetails");
+            
+            return View(AllAgentDetails);
         }
     }
 }
+
